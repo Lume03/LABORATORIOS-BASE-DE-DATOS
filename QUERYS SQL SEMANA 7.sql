@@ -74,7 +74,7 @@ WHERE EXISTS (SELECT 1 FROM SP sp WHERE sp."S#" = s."S#");
 
 SELECT "S#"
 FROM S
-WHERE status = (SELECT MAX(status) FROM S);
+WHERE status < (SELECT MAX(status) FROM S);
 
 -- 14. Obtenga el nombre de proveedor para los proveedores que abastecen la parte P2 (aplicar EXISTS en su solución).
 
@@ -114,4 +114,5 @@ WHERE p.weight > 16
    OR EXISTS (
         SELECT 1 FROM SP sp
         WHERE sp."P#" = p."P#" AND sp."S#" = 'S2'
+
     );
